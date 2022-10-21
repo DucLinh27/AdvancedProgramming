@@ -1,0 +1,15 @@
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.csproj.AssemblyReference.cache
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.GeneratedMSBuildEditorConfig.editorconfig
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.AssemblyInfoInputs.cache
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.AssemblyInfo.cs
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.csproj.CoreCompileInputs.cache
+D:\ManagerSchool\ManagerSchool\ManagerSchool\bin\Debug\net6.0\ManagerSchool.exe
+D:\ManagerSchool\ManagerSchool\ManagerSchool\bin\Debug\net6.0\ManagerSchool.deps.json
+D:\ManagerSchool\ManagerSchool\ManagerSchool\bin\Debug\net6.0\ManagerSchool.runtimeconfig.json
+D:\ManagerSchool\ManagerSchool\ManagerSchool\bin\Debug\net6.0\ManagerSchool.dll
+D:\ManagerSchool\ManagerSchool\ManagerSchool\bin\Debug\net6.0\ManagerSchool.pdb
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.dll
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\refint\ManagerSchool.dll
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.pdb
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ManagerSchool.genruntimeconfig.cache
+D:\ManagerSchool\ManagerSchool\ManagerSchool\obj\Debug\net6.0\ref\ManagerSchool.dll

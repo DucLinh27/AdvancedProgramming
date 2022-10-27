@@ -47,16 +47,18 @@ class Program
                                         switch (optionForMenuSchool)
                                         {
                                             case 1:
-                                                
+
                                                 // Add Student
                                                 school.AddInformationStudent();
+                                                UICode.AddSuccessful();
                                                 UICode.MenuForSchool();
                                                 break;
 
                                             case 2:
+                                                // Add Point
                                                 try
                                                 {
-                                                    // because the app doesn't have auto generate ID so we need to enter ID for each new row
+                                                    // Not genarate ID
                                                     Console.WriteLine("Enter point ID: ");
                                                     int pointID = int.Parse(Console.ReadLine());
 
@@ -71,26 +73,24 @@ class Program
                                                         Console.ForegroundColor = ConsoleColor.White;
                                                         newStudent.StudentID = UICode.EnterStudentID();
                                                     }
-
-
+                                                    
                                                     Student studentObject = school.SearchStudentObject(newStudent.StudentID);
-                                                    // enter the rest of info
-                                                    Console.WriteLine("Enter math point");
+
+
+                                                    // Enter the rest of info
+
+                                                    Console.WriteLine("Enter Mathpoint: ");
                                                     double Mathpoint = double.Parse(Console.ReadLine());
-                                                    Console.WriteLine("Enter chemistry point");
+                                                    Console.WriteLine("Enter Chemistrypoint: ");
                                                     double Chemistrypoint = double.Parse(Console.ReadLine());
-                                                    Console.WriteLine("Enter physics point");
+                                                    Console.WriteLine("Enter Physicspoint: ");
                                                     double Physicspoint = double.Parse(Console.ReadLine());
-
-
                                                     Point newPoint = new Point(pointID, studentObject, Mathpoint, Chemistrypoint, Physicspoint);
 
 
-                                                    // add new point to point list in student 
+                                                    // Add new point to point list in student 
                                                     school.Points.Add(newPoint);
-                                                    Console.WriteLine("Add point successfully!");
-
-
+                                                    UICode.AddSuccessful();                                                  
                                                     UICode.MenuForSchool();
                                                     
                                                 }
@@ -105,6 +105,7 @@ class Program
                                                 break;
 
                                             case 3:
+                                                // View Student
                                                 school.PrintInformationOfStudent();
                                                 UICode.MenuForSchool();
                                                 break;
@@ -151,12 +152,7 @@ class Program
                                                 }
                                                 break;
 
-                                                foreach (var student in school.Students)
-                                                {
-                                                    Console.WriteLine(student.ToString());
-                                                }
-                                                UICode.MenuForSchool();
-                                                break;
+                                                
                                             case 6:
                                                 // Update Point
                                                 try
@@ -200,6 +196,7 @@ class Program
                                                         idToDelete = UICode.EnterStudentID();
                                                     }
                                                     school.DeleteStudentByID(idToDelete);
+                                                    school.DeletePointByID(idToDelete);
                                                     Console.ForegroundColor = ConsoleColor.Green;
                                                     UICode.DeleteSuccessful();
                                                     Console.ForegroundColor = ConsoleColor.White;
@@ -243,21 +240,62 @@ class Program
                                                 break;
                                             case 9:
                                                 //Search Student
-                                                int enterID = UICode.EnterStudentID();
-                                                var studentInListBorrow = school.GetStudentByID(enterID);
-                                                Console.WriteLine(studentInListBorrow.ToString());
-                                                UICode.MenuForSchool();
+                                                try
+                                                {
+                                                    int enterID = UICode.EnterStudentID();
+                                                    while (!school.SearchStudentID(enterID))
+                                                    {
+                                                        Console.ForegroundColor = ConsoleColor.Red;
+                                                        UICode.SearchFail();
+                                                        Console.ForegroundColor = ConsoleColor.White;
+                                                        enterID = UICode.EnterPointID();
+                                                    }
+                                                    var studentInListBorrow = school.GetStudentByID(enterID);
+                                                    Console.WriteLine(studentInListBorrow.ToString());
+                                                    Console.ForegroundColor = ConsoleColor.Green;
+                                                    UICode.SearchSuccessful();
+                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                    UICode.MenuForSchool();
+                                                }
+                                                catch (FormatException ex)
+                                                {
+                                                    Console.WriteLine("Please enter the number\n" + ex.Message);
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Console.WriteLine("Error " + ex.Message);
+                                                }
                                                 break;
+                                                
                                             case 10:
                                                 //Search Point
-                                                int enterpointID = UICode.EnterStudentID();
-                                                var pointInListBorrow = school.GetPointByID(enterpointID);
-                                                Console.WriteLine(pointInListBorrow.ToString());
-                                                UICode.MenuForSchool();
+                                                try
+                                                {
+                                                    int enterpointID = UICode.EnterStudentID();
+                                                    while (!school.SearchStudentID(enterpointID))
+                                                    {
+                                                        Console.ForegroundColor = ConsoleColor.Red;
+                                                        UICode.SearchFail();
+                                                        Console.ForegroundColor = ConsoleColor.White;
+                                                        enterpointID = UICode.EnterPointID();
+                                                    }
+                                                    var pointInListBorrow = school.GetPointByID(enterpointID);
+                                                    Console.WriteLine(pointInListBorrow.ToString());
+                                                    Console.ForegroundColor = ConsoleColor.Green;
+                                                    UICode.SearchSuccessful();
+                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                    UICode.MenuForSchool();
+                                                }
+                                                catch (FormatException ex)
+                                                {
+                                                    Console.WriteLine("Please enter the number\n" + ex.Message);
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Console.WriteLine("Error " + ex.Message);
+                                                }
                                                 break;
-
-
-
+                                               
                                             case 11:
                                                 goto MenuCommand;
                                         }
@@ -310,17 +348,59 @@ class Program
                                                 break;
                                             case 3:
                                                 //Search Student
-                                                int enterID = UICode.EnterStudentID();
-                                                var studentInListBorrow = school.GetStudentByID(enterID);
-                                                Console.WriteLine(studentInListBorrow.ToString());
-                                                UICode.MenuForStudent();
+                                                try
+                                                {
+                                                    int enterID = UICode.EnterStudentID();
+                                                    while (!school.SearchStudentID(enterID))
+                                                    {
+                                                        Console.ForegroundColor = ConsoleColor.Red;
+                                                        UICode.SearchFail();
+                                                        Console.ForegroundColor = ConsoleColor.White;
+                                                        enterID = UICode.EnterPointID();
+                                                    }
+                                                    var studentInListBorrow = school.GetStudentByID(enterID);
+                                                    Console.WriteLine(studentInListBorrow.ToString());
+                                                    Console.ForegroundColor = ConsoleColor.Green;
+                                                    UICode.SearchSuccessful();
+                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                    UICode.MenuForStudent();
+                                                }
+                                                catch (FormatException ex)
+                                                {
+                                                    Console.WriteLine("Please enter the number\n" + ex.Message);
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Console.WriteLine("Error " + ex.Message);
+                                                }
                                                 break;
                                             case 4:
                                                 //Search Point
-                                                int enterpointID = UICode.EnterStudentID();
-                                                var pointInListBorrow = school.GetPointByID(enterpointID);
-                                                Console.WriteLine(pointInListBorrow.ToString());
-                                                UICode.MenuForStudent();
+                                                try
+                                                {
+                                                    int enterpointID = UICode.EnterStudentID();
+                                                    while (!school.SearchStudentID(enterpointID))
+                                                    {
+                                                        Console.ForegroundColor = ConsoleColor.Red;
+                                                        UICode.SearchFail();
+                                                        Console.ForegroundColor = ConsoleColor.White;
+                                                        enterpointID = UICode.EnterPointID();
+                                                    }
+                                                    var pointInListBorrow = school.GetPointByID(enterpointID);
+                                                    Console.WriteLine(pointInListBorrow.ToString());
+                                                    Console.ForegroundColor = ConsoleColor.Green;
+                                                    UICode.SearchSuccessful();
+                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                    UICode.MenuForStudent();
+                                                }
+                                                catch (FormatException ex)
+                                                {
+                                                    Console.WriteLine("Please enter the number\n" + ex.Message);
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Console.WriteLine("Error " + ex.Message);
+                                                }
                                                 break;
                                             case 5:
                                                 goto MenuCommand;
@@ -355,10 +435,6 @@ class Program
                 Console.WriteLine("Error " + ex.Message);
             }
             Console.ReadLine();
-
-
-
-
             Console.WriteLine("Enter Y TO continue and N to stop");
             isEndApp = char.Parse(Console.ReadLine());
         } while (isEndApp == 'Y' || isEndApp == 'y');

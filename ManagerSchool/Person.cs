@@ -26,7 +26,7 @@ namespace ManagerSchool
         }
 
         private string address;
-        public string Address
+        public string Address  
         {
             get { return address; }
             set { address = value; }

@@ -10,13 +10,38 @@ namespace ManagerSchool
 {
     public class Point
     {
-        public int PointID { get; set; }
-        public double Mathpoint { get; set; }
-        public double Chemistrypoint { get; set; }
+        private int pointID;
+        public int PointID
+        {
+            get { return pointID; }
+            set { pointID = value; }
+        }
+        private double mathpoint;
+        public double Mathpoint
+        {
+            get { return mathpoint; }
+               set { mathpoint = value; }
+        }
+        private double chemistrypoint;
+        public double Chemistrypoint
+        {
+            get { return chemistrypoint; }
+            set { chemistrypoint = value; }
+        }
 
-        public double Physicspoint { get; set; }
+        private double physicspoint;
+        public double Physicspoint
+        {
+            get { return physicspoint; }
+            set { physicspoint = value; }
+        }
 
-        public Student Student { get; set; }
+        private Student student;
+        public Student Student
+        {
+            get { return student; }
+            set { student = value; }
+        }
 
 
         public Point(int pointID, Student student,  double mathpoint, double chemistrypoint, double physicspoint)
@@ -34,10 +59,14 @@ namespace ManagerSchool
         {
             throw new NotImplementedException();
         }
-        
+
         public override string ToString()
         {
-            return "PointID:" + PointID + " Mathpoint:" + Mathpoint + " Chemistrypoint:" + Chemistrypoint + " Physicspoint:" + Physicspoint;
+            return "PointID:"  + PointID+ 
+                " StudentID:" + Student.StudentID +
+                " Mathpoint:" + Mathpoint + 
+                " Chemistrypoint:" + Chemistrypoint + 
+                " Physicspoint:" + Physicspoint;
         }
     }
 }

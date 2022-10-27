@@ -9,7 +9,15 @@ namespace ManagerSchool
     public class Student : Person, ILogin
     {
         List<Point> points = new List<Point>();
-        public int StudentID { get; set; }
+        private int studentID;
+        public int StudentID
+        {
+            get { return studentID; }   
+            set
+            {
+                studentID = value;
+            }
+        }
         public List<Point> Points { get => points; set => points = value; }
 
 
@@ -21,6 +29,11 @@ namespace ManagerSchool
         {
 
         }
+
+        public Student(int studentID, string name, string email, string address, string phoneNumber) : this(studentID)
+        {
+        }
+
         public bool Login(string usernameToCheck, string passwordToCheck)
         {
             string usernameCorrect = "Student";
@@ -43,26 +56,16 @@ namespace ManagerSchool
             this.PhoneNumber = UICode.EnterStudentPhone();
             
         }
-
-
-
-        public string PrintListPoint()
-        {
-            string x = "";
-            foreach (var points in Points)
-            {
-                x += points.ToString();
-            }
-            return x;
-        }
-        public void AddPoint(Point point)
-        {
-            Point.Add(point);
-        }
+        
 
         public override string ToString()
         {
-            return "Student ID:" + StudentID + " Name:" + Name + " Age:" + Email + " Address:" + Address + " Phone:" + PhoneNumber + "\n" + $"{PrintListPoint()}\n";
+            return "Student ID:" + StudentID +
+                " Name:" + Name +
+                " Email:" + Email +
+                " Address:" + Address +
+                " Phone:" + PhoneNumber;
+                
         }
 
         
